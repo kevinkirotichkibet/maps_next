@@ -63,10 +63,25 @@ const PlacesAutocomplete = ({ setSelected }) => {
     suggestions: { status, data },
     clearSuggestions,
   } = usePlacesAutocomplete();
-  return;
-  <div>
-    <Combobox>
-      <ComboboxInput value={value} onChange={(e)=> setValue(e.target.value)}/>
-    </Combobox>
-  </div>;
+  return (
+    <div>
+      <Combobox className="combobox">
+        <ComboboxInput
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          disabled={!ready}
+          className="combobox-input"
+          placeholder="Search an address"
+        />
+        <ComboboxPopover>
+          <ComboboxList>
+            {status === "OK" &&
+              data.map(({ place_id, description }) => (
+                <ComboboxOption key={place_id} value={description} />
+              ))}
+          </ComboboxList>
+        </ComboboxPopover>
+      </Combobox>
+    </div>
+  );
 };
