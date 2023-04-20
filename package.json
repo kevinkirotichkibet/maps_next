@@ -18,5 +18,8 @@
     "react-places-autocomplete": "^7.3.0",
     "react-widgets": "^5.8.4",
     "use-places-autocomplete": "^4.0.0"
+  },
+  "devDependencies": {
+    "@ubilabs/google-maps-react-hooks": "^2.0.2"
   }
 }

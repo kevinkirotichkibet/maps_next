@@ -253,6 +253,11 @@
     "@typescript-eslint/types" "5.58.0"
     "eslint-visitor-keys" "^3.3.0"
 
+"@ubilabs/google-maps-react-hooks@^2.0.2":
+  "integrity" "sha512-rKs2p9+G2r/fKRykltcjyx6CTjC7/yLQWPxeiohbaGMX9CSPeH5HiDNko/WwtNd5HPAf5awyVSL7aKhjyw0aUA=="
+  "resolved" "https://registry.npmjs.org/@ubilabs/google-maps-react-hooks/-/google-maps-react-hooks-2.0.2.tgz"
+  "version" "2.0.2"
+
 "acorn-jsx@^5.3.2":
   "integrity" "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="
   "resolved" "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"

@@ -1,87 +1,30 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+// import { useState, useEffect, useRef } from "react";
+// import {
+//   GoogleMapProvider,
+//   useGoogleMap,
+// } from "@ubilabs/google-maps-react-hooks";
+import Places from "./places";
 
-import { useMemo, useState } from "react";
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "react-widgets";
-import "react-widgets/styles.css";
+// const mapOptions = {
+//   zoom: 12,
+//   center: {
+//     lat: 43.68,
+//     lng: -79.43,
+//   },
+// };
 
 export default function Home() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
-  });
+  <Places />;
+  <div>This is a new DIV</div>;
+  //   const [mapContainer, setMapContainer] = useState(null);
 
-  if (!isLoaded) return <div>Loading..</div>;
-  return (
-    <div>
-      <Map />
-    </div>
-  );
+  // return(
 
-  function Map() {
-    const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
-    const [selected, setSelected] = useState(null);
-
-    return (
-      <>
-        <div className="places-container">
-          {/* <PlacesAutocomplete /> */}
-          <PlacesAutocomplete setSelected={setSelected} />
-        </div>
-
-        <GoogleMap
-          zoom={10}
-          center={center}
-          mapContainerClassName="map-container"
-        >
-          {selected && <MarkerF position={selected} />}
-          {/* <MarkerF position={{ lat: 43.45, lng: -80.49 }} /> */}
-        </GoogleMap>
-      </>
-    );
-  }
+  // <GoogleMapProvider>
+  //   googleMapsApiKey = {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+  //   options ={mapOptions}
+  //   mapContainer = {mapContainer}
+  //   <div ref={(node) => setMapContainer(node)} style={{ height: "100vh" }} />
+  // </GoogleMapProvider>
+  // );
 }
-const PlacesAutocomplete = ({ setSelected }) => {
-  const {
-    ready,
-    value,
-    setValue,
-    suggestions: { status, data },
-    clearSuggestions,
-  } = usePlacesAutocomplete();
-  return (
-    <div>
-      <Combobox className="combobox">
-        <ComboboxInput
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          disabled={!ready}
-          className="combobox-input"
-          placeholder="Search an address"
-        />
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({ place_id, description }) => (
-                <ComboboxOption key={place_id} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </div>
-  );
-};
